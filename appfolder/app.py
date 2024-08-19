@@ -20,7 +20,7 @@ def home():
 @app.route("/get_matches", methods=["GET"])
 def get_matches():
     create_mail(mailList, matchResponse)
-    return jsonify(matchResponse.matchState), 200
+    return jsonify("There is a match" if matchResponse.matchState == 1 else "No match"), 200
 
 
 if __name__ == "__main__":
