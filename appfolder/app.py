@@ -8,8 +8,13 @@ app.config["DEBUG"] = False
 
 @app.route("/", methods=["GET"])
 def home():
-    return """<h1>Merhaba</h1>
-        <p>Rams Park Maç takip sistemine hoşgeldiniz.\n .../get_matches adresine istek atarak maç durumunun mail ile iletilmesini sağlayabilirsiniz.</p>"""
+    return """<h1>RAMS Park Maç Takip Sistemi</h1>
+        <p>Merhaba, Rams Park Maç takip sistemine hoşgeldiniz. .../get_matches adresine istek atarak maç durumunun mail ile iletilmesini sağlayabilirsiniz.</p>
+    <h3> Maç durumunu mail ile iletmek için </h4>
+            <form action="http://127.0.0.1:5000/get_matches">
+                    <input type="submit" value="Mail yolla"/>
+            </form>
+        <p> Not: Eğer bir maç yoksa mail atılmayacaktır."""
 
 
 @app.route("/get_matches", methods=["GET"])

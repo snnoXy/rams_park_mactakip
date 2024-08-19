@@ -26,7 +26,6 @@ class Match:
 
         for response in self.response:
             if response['fixture']['venue']['name'] in venue_names:
-                print("found")
                 self.matchState = 1
                 self.matchTime = response['fixture']['date'][11:16]
                 self.firstTeam = response['teams']['home']['name']
