@@ -17,6 +17,7 @@ outlookPsw = os.getenv('ADMIN_OUTLOOK_PASSWORD')
 receiverMails = os.getenv('RECEIVER_MAILS').split(',')
 receiverNames = os.getenv('RECEIVER_NAMES').split(',')
 receiverSurnames = os.getenv('RECEIVER_SURNAMES').split(',')
+excelFilePath = os.getenv('EXCEL_FILE_PATH')
 
 mailList = []
 

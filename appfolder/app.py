@@ -1,5 +1,5 @@
-from flask import Flask, jsonify
-from utils import get_match_response, create_mail
+from flask import request ,Flask, jsonify
+from utils import get_match_response, create_mail, add_mails_toList
 from config import mailList
 
 app = Flask(__name__)
@@ -21,7 +21,17 @@ def home():
 def get_matches():
     create_mail(mailList, matchResponse)
     return jsonify("There is a match" if matchResponse.matchState == 1 else "No match"), 200
+@app.route("/post_matches",methods= ["POST"])
+def post_matches():
+    try:
+        mail_list_data = request.get_json()
+        add_mails_toList(mail_list_data)
+        create_mail(mailList, matchResponse)
 
+    except Exception as error:
+        return jsonify({f"ERROR: {str(error)}"}), 400
+
+    return jsonify(matchResponse.matchState), 201
 
 if __name__ == "__main__":
     matchResponse = get_match_response()

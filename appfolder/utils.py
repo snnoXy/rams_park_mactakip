@@ -1,6 +1,6 @@
 from Match import Match
 from Mail import Mail
-from config import date, outlookPsw, outlookUser
+from config import date, outlookPsw, outlookUser,mailList
 
 
 def get_match_response():
@@ -31,3 +31,10 @@ def create_mail(mailList,match):
     if match.matchState == 1 :
         body = f"\nYarin Rams Park stadyumunda saat {match.matchTime}'da maç vardır.\nTakimlar: {match.firstTeam} ve {match.secondTeam}"
         prepareAndSend_mail(mailList,subject,body)
+
+def add_mails_toList(wanted_mails):
+    for mail in wanted_mails:
+        if mail not in mailList:
+            mailList.append(mail)
+
+
