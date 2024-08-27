@@ -9,8 +9,8 @@ today = datetime.today()
 day = timedelta(days=1)
 tomorrow = today + day
 
-#date = str(tomorrow.date())
-date = "2024-08-09"
+date = str(tomorrow.date())
+#date = "2024-08-09"
 
 outlookUser = os.getenv('ADMIN_OUTLOOK')
 outlookPsw = os.getenv('ADMIN_OUTLOOK_PASSWORD')
