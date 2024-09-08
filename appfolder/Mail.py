@@ -3,6 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import logging
 
+logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s', level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S')
 
 class Mail:
     def __init__(self, outlook_user, outlook_psw, host, port=587):
@@ -26,14 +27,15 @@ class Mail:
 
         try:
             server.login(user=self.outlookUser, password=self.outlookPsw)
-            if self.message: #None dene
+            logging.info("Succesfully logged in to Outlook server.")
+            if self.message:
                 server.sendmail(from_addr=self.message['From'],
                                 to_addrs=self.message['To'],
                                 msg=self.message.as_string())
-                print("Mail sent successfully")
+                logging.info("Mail sent successfully")
 
         except Exception as error:
-            print(error)
+            logging.error(f"There was an error sending mail: {error}")
 
         finally:
             server.quit()
