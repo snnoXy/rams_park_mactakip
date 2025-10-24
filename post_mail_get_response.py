@@ -20,4 +20,4 @@ def post_mailList_to_url(excelList, url):
     else:
         print(f"Something went wrong {response.status_code} {response.text}")
 
-post_mailList_to_url(excelFilePath, "http://127.0.0.1:5000/post_matches")
+post_mailList_to_url(excelFilePath, "local_host/post_matches")
